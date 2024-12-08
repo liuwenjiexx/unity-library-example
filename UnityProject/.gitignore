@@ -9,6 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+/androidBuild/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
@@ -63,3 +64,4 @@ sysinfo.txt
 crashlytics-build.properties
 
 .DS_Store
+/.vsconfig
