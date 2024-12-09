@@ -1,16 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using GoogleMobileAds.Api;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class TestAd : MonoBehaviour
 {
-
+    static int n;
     private void Awake()
-    {
-
+    { 
         Debug.Log("Unity::Awake");
+        Debug.Log("Unity::static n=" + (++n));
+        Debug.Log("GetProcessById: " + Process.GetCurrentProcess().Id);
     }
 
     // Start is called before the first frame update
@@ -27,6 +30,12 @@ public class TestAd : MonoBehaviour
         AdUtility.isShow = true;
         AdUtility.Initialize();
 
+        Application.quitting += Application_quitting;
+    }
+
+    private void Application_quitting()
+    {
+        Debug.Log("Unity::Application_quitting");
     }
 
     // Update is called once per frame
@@ -251,12 +260,17 @@ public class TestAd : MonoBehaviour
                         AdUtility.ShowRewardedInterstitialAd();
                     }
                 }
+
+                if (GUILayout.Button("showHostMainWindow"))
+                {
+                    showHostMainWindow();
+                }
+                if (GUILayout.Button("Quit"))
+                {
+                    Application.Quit();
+                }
             }
 
-            if (GUILayout.Button("Exit Unity"))
-            {
-                showHostMainWindow();
-            }
         }
     }
 

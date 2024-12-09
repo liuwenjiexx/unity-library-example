@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("Unity", "MainActivity::onCreate");
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+        Log.i("Unity", "MainActivity::onNewIntent");
         handleIntent(intent);
         setIntent(intent);
     }
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.i("Unity", "MainActivity::onActivityResult "+requestCode);
         if(requestCode == 1) isUnityLoaded = false;
     }
 
@@ -83,5 +87,36 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finishAffinity();
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Log.i("Unity", "MainActivity::onStart");
+    }
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        Log.i("Unity", "MainActivity::onRestart");
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.i("Unity", "MainActivity::onResume");
+    }
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Log.i("Unity", "MainActivity::onPause");
+    }
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Log.i("Unity", "MainActivity::onStop");
+    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Log.i("Unity", "MainActivity::onDestroy");
     }
 }
